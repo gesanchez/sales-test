@@ -1,0 +1,24 @@
+<div class="container-cart">
+  <h2 ng-if="products.shops.length == 0" style="text-align: center;">You dont have purchased items</h2>
+  <h2 ng-if="products.shops.length > 0" style="text-align: center;">Puchased items</h2>
+  <table ng-if="products.shops.length > 0" cellpadding="0" cellspacing="0" border="0" style="width: 100%">
+    <tr>
+      <th>Product</th>
+      <th>Places</th>
+      <th>Price</th>
+      <th>Option</th>
+    </tr>
+    <tr ng-repeat="product in products.shops">
+      <td style="text-align: center">{{ product.product.name }}</td>
+      <td style="text-align: center" ng-if="product.place">{{ product.place.name }}</td>
+      <td style="text-align: center" ng-if="!product.place">&nbsp;</td>
+      <td style="text-align: center">
+        <input ng-model="product.price" style="width: 100px" type="text" placeholder="price" ng-if="product.price"/>
+        <input ng-model="product.product.price" style="width: 100px" type="text" placeholder="price" ng-if="!product.price"/>
+      </td>
+      <td style="text-align: center">
+        <a href="#" ng-click="update($event, product)">Update</a>
+      </td>
+    </tr>
+  </table>
+</div>

@@ -1,0 +1,37 @@
+.header{
+  height: 60px;
+  width: 100%;
+  background-color: @header-bg-color;
+
+  & .side1{
+    float: left;
+    width: 30%;
+
+    & h2{
+      margin: 0;
+      padding: 0;
+      color: @header-title-color;
+      font-size: 50px;
+      font-weight: normal;
+      margin-left: 10px;
+    }
+  }
+
+  & .side2{
+    float: left;
+    width: 70%;
+    text-align: right;
+
+    & .login{
+      display: inline-block;
+      margin-top: 15px;
+      margin-right: 20px;
+
+      & .fa{
+        color: #FFF;
+        font-size: 30px;
+        cursor: pointer;
+      }
+    }
+  }
+}

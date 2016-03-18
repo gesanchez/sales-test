@@ -1,0 +1,26 @@
+<div class="container-cart">
+  <h2 ng-if="products.myList.length == 0" style="text-align: center;">You dont have items added</h2>
+  <h2 ng-if="products.myList.length > 0" style="text-align: center;">Items added</h2>
+  <table ng-if="products.myList.length > 0" cellpadding="0" cellspacing="0" border="0" style="width: 100%">
+    <tr>
+      <th>Product</th>
+      <th>Places</th>
+      <th>Price</th>
+      <th>Option</th>
+    </tr>
+    <tr ng-repeat="product in products.myList">
+      <td style="text-align: center">{{ product.name }}</td>
+      <td style="text-align: center">
+        <select ng-model="product.place">
+          <option value="">Select place</p>
+          <option value="{{ places.id }}" ng-repeat="places in products.places">{{ places.name }}</option>
+        </select>
+      </td>
+      <td style="text-align: center">{{ product.price }}</td>
+      <td style="text-align: center">Remove</td>
+    </tr>
+  </table>
+  <div ng-if="products.myList.length > 0" style="text-align: center;margin-top: 20px">
+    <button type="button" ng-click="checkout()">Check-out</button>
+  </div>
+</div>

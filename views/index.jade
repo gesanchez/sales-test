@@ -1,0 +1,65 @@
+<!doctype html>
+html
+  head
+    meta(name="viewport", content="width=device-width", initial-scale="1.0")
+    meta(http-equiv="Content-Type", content="text/html; charset=utf-8")
+    link(rel="stylesheet" href="/static/stylesheet/app.css")
+    title.
+      Sales App
+  body(ng-controller="MainCtrl")
+    div(class="header")
+      div(class="side1")
+        h2(ng-click="goTo('/')", style="cursor: pointer").
+          Sales app
+      div(class="side2")
+        div(class="login" ng-if="!storage.token")
+          i(class="fa fa-key" ng-click="$parent.loginModal = !$parent.loginModal")
+          span. 
+            Login
+        div(class="login" ng-if="storage.token")
+          i(class="fa fa-user")
+          span. 
+            {{ storage.user.name }}
+        div(class="login" ng-if="storage.token")
+          i(class="fa fa-file-text-o" ng-click="$parent.goTo('/my-shops')")
+          span. 
+            My Shops
+        div(class="login" ng-if="storage.token")
+          i(class="fa fa-shopping-cart" ng-click="$parent.goTo('/cart')")
+          span. 
+            {{ productsService.myList.length}}
+            
+        div(class="login")
+          i(class="fa fa-search" ng-click="goTo('/billing')")
+          span. 
+            Search bill
+        div(class="login" ng-if="storage.token")
+          i(class="fa fa-sign-out" ng-click="$parent.logout()")
+          span. 
+            Logout
+      div(class="clearfix")
+    div(ng-view)
+    modal(show="loginModal" height="40%")
+      h2.
+        Login
+      p.
+        Enter your document number for enter
+      div(style="text-align: center")
+        input(type="text" placeholder="document" ng-model="loginFields.documents")
+      div(style="text-align: center;margin-top: 10px;")
+        button(type="button" ng-click="doLogin()").
+          Enter
+        p(ng-if="statesLogin.error").
+          {{ statesLogin.error }}
+          
+    div(class="footer")
+      h4.
+       Made with love by German Sanchez
+    script(type="text/json" json="" callback="init(data)")!= data
+    script(src="/static/javascript/jquery.js" type="text/javascript")
+    script(src="/static/javascript/angular.js" type="text/javascript")
+    script(src="/static/javascript/angular-route.js" type="text/javascript")
+    script(src="/static/javascript/storage.js" type="text/javascript")
+    script(src="/static/javascript/json.js" type="text/javascript")
+    script(src="/static/javascript/modal.js" type="text/javascript")
+    script(src="/static/javascript/app.js" type="text/javascript")

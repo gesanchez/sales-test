@@ -1,0 +1,36 @@
+<div class="container-billing">
+  <div style="text-align: center;margin-top: 50px;">
+    <h2>Search bill</h2>
+    <input type="text" placeholder="Enter document number" ng-model="queryFields.query"/>
+    <button type="button" ng-click="search()">Search</button>
+  </div>
+  <table align="center" cellpadding="0" cellspacing="0" border="1" ng-if="bill.data">
+    <tr>
+      <td><b>Documento:</b></td>
+      <td>{{ bill.data.documents }}</td>
+      <td><b>Nombres:</b></td>
+      <td>{{ bill.data.name }}</td>
+    </tr>
+    <tr>
+      <td><b>id</b></td>
+      <td><b>Producto</b></td>
+      <td><b>Sede</b></td>
+      <td><b>Precio</b></td>
+    </tr>
+    <tr ng-repeat="item in bill.data.items">
+      <td>{{ item.id }}</td>
+      <td ng-if="!item.product.name">&nbsp;</td>
+      <td ng-if="item.product.name">{{ item.product.name }}</td>
+      <td ng-if="!item.sede.name">&nbsp;</td>
+      <td ng-if="item.sede.name">{{ item.sede.name }}</td>
+      <td ng-if="!item.price">{{ item.product.price }}</td>
+      <td ng-if="item.price">{{ item.price }}</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+      <td><b>Total Precio</b></td>
+      <td>{{ $parent.totalPrice }}</td>
+    </tr>
+  </table>
+</div>

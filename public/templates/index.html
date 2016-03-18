@@ -1,0 +1,16 @@
+<div class="container-product">
+  <div class="product-box" ng-repeat="product in products">
+    <div style="text-align:center">
+      <i class="fa fa-archive"></i>
+    </div>
+    <div>
+      <h3>{{ product.name }}</h3>
+      <p>{{ product.details }}</p>
+      <em>{{ product.price }}</em>
+      <div style="text-align: center">
+        <button type="button" ng-click="addCart(product)">Add Cart</button>
+      </div>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+</div>
